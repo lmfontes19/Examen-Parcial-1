@@ -1,12 +1,6 @@
 """
 EXAMEN PRINCIPIOS SOLID - 2 HORAS
 Sistema de Mini-Biblioteca
-
-CODIGO REFACTORIZADO CUMPLIENDO SOLID
-- Separacion de responsabilidades en clases especificas (SRP)
-- Inyeccion de dependencias para mejorar testabilidad (DIP)
-- Cada clase tiene UNA sola responsabilidad
-- Dependencias de abstracciones, no de implementaciones concretas
 """
 
 from dataclasses import dataclass
@@ -36,11 +30,6 @@ class Prestamo:
 class SistemaBiblioteca:
     """
     Clase principal del sistema que coordina las operaciones de biblioteca.
-    
-    CUMPLE DIP:
-    - Depende de IRepositorio (abstraccion), no de implementacion concreta
-    - Permite intercambiar repositorios sin cambiar codigo
-    - Facilita testing con mocks
     """
     def __init__(self,
                  busqueda: Busqueda,
@@ -49,9 +38,6 @@ class SistemaBiblioteca:
                  notificaciones: ServicioNotificaciones):
         """
         Inicializa el sistema con todas sus dependencias.
-        
-        Todas las dependencias son obligatorias para cumplir con DIP.
-        No hay creacion de objetos concretos dentro de la clase.
         """
         self.libros = []
         self.prestamos = []
@@ -233,23 +219,10 @@ class SistemaBiblioteca:
         """Retorna solo los prestamos activos (no devueltos)."""
         return [p for p in self.prestamos if not p.devuelto]
 
-def main(tipo_repositorio: IRepositorio):
+def main(sistema: SistemaBiblioteca):
     """
     Funcion principal que demuestra el uso del sistema refactorizado.
-    Ahora con inyeccion completa de dependencias cumpliendo DIP.
     """
-    busqueda = Busqueda()
-    validador = ValidadorBiblioteca()
-    notificaciones = ServicioNotificaciones()
-    repositorio = tipo_repositorio
-
-    sistema = SistemaBiblioteca(
-        busqueda=busqueda,
-        validador=validador,
-        repositorio=repositorio,
-        notificaciones=notificaciones
-    )
-
     print("\n=== AGREGANDO LIBROS ===")
     print(sistema.agregar_libro("Cien Años de Soledad", "Gabriel Garcia Marquez", "9780060883287"))
     print(sistema.agregar_libro("El Principito", "Antoine de Saint-Exupery", "9780156012195"))
@@ -271,10 +244,37 @@ def main(tipo_repositorio: IRepositorio):
     print("\n=== DEVOLVER LIBRO ===")
     print(sistema.devolver_libro(1))
 
+    print("\n=== PRÉSTAMOS ACTIVOS ===")
+    activos = sistema.obtener_prestamos_activos()
+    print(f"Total de préstamos activos: {len(activos)}")
+    for prestamo in activos:
+        print(f"- Prestamo ID {prestamo.id} para libro ID {prestamo.libro_id} a {prestamo.usuario}")
+
 if __name__ == "__main__":
-    # Ejemplo con repositorio archivo
-    main(tipo_repositorio=RepositorioArchivo("biblioteca_refactorizada.json"))
+    busqueda = Busqueda()
+    validador = ValidadorBiblioteca()
+    notificaciones = ServicioNotificaciones()
 
     # Ejemplo con repositorio memoria
+    repositorio = RepositorioMemoria()
+
     print("\n" + "="*60)
-    main(tipo_repositorio=RepositorioMemoria())
+    biblioteca_sistema = SistemaBiblioteca(
+        busqueda=busqueda,
+        validador=validador,
+        repositorio=repositorio,
+        notificaciones=notificaciones
+    )
+    main(biblioteca_sistema)
+
+    # Ejemplo con repositorio archivo
+    repositorio=RepositorioArchivo("biblioteca_refactorizada.json")
+
+    print("\n" + "="*60)
+    biblioteca_sistema = SistemaBiblioteca(
+        busqueda=busqueda,
+        validador=validador,
+        repositorio=repositorio,
+        notificaciones=notificaciones
+    )
+    main(biblioteca_sistema)
