@@ -1,0 +1,38 @@
+{
+  "libros": [
+    {
+      "id": 1,
+      "titulo": "Cien Años de Soledad",
+      "autor": "Gabriel Garcia Marquez",
+      "isbn": "9780060883287",
+      "disponible": false
+    },
+    {
+      "id": 2,
+      "titulo": "El Principito",
+      "autor": "Antoine de Saint-Exupery",
+      "isbn": "9780156012195",
+      "disponible": true
+    },
+    {
+      "id": 3,
+      "titulo": "1984",
+      "autor": "George Orwell",
+      "isbn": "9780451524935",
+      "disponible": true
+    }
+  ],
+  "prestamos": [
+    {
+      "id": 1,
+      "libro_id": 1,
+      "usuario": "Juan Perez",
+      "devuelto": "2025-10-03",
+      "fecha": false
+    }
+  ],
+  "contadores": {
+    "libro": 4,
+    "prestamo": 2
+  }
+}

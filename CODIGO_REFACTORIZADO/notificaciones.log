@@ -1,0 +1,8 @@
+2025-10-03T14:53:28.534178 | LIBRO_AGREGADO | Nuevo libro agregado: 'Cien Años de Soledad' por Gabriel Garcia Marquez | Datos: {'titulo': 'Cien Años de Soledad', 'autor': 'Gabriel Garcia Marquez', 'accion': 'agregar_libro'}
+2025-10-03T14:53:28.537178 | LIBRO_AGREGADO | Nuevo libro agregado: 'El Principito' por Antoine de Saint-Exupery | Datos: {'titulo': 'El Principito', 'autor': 'Antoine de Saint-Exupery', 'accion': 'agregar_libro'}
+2025-10-03T14:53:28.540176 | LIBRO_AGREGADO | Nuevo libro agregado: '1984' por George Orwell | Datos: {'titulo': '1984', 'autor': 'George Orwell', 'accion': 'agregar_libro'}
+2025-10-03T14:53:28.583458 | PRESTAMO_REALIZADO | Prestamo realizado a Juan Perez | Datos: {'usuario': 'Juan Perez', 'libro': 'Cien Años de Soledad', 'fecha': False, 'accion': 'prestamo'}
+2025-10-03T14:53:28.590469 | LIBRO_AGREGADO | Nuevo libro agregado: 'Cien Años de Soledad' por Gabriel Garcia Marquez | Datos: {'titulo': 'Cien Años de Soledad', 'autor': 'Gabriel Garcia Marquez', 'accion': 'agregar_libro'}
+2025-10-03T14:53:28.593469 | LIBRO_AGREGADO | Nuevo libro agregado: 'El Principito' por Antoine de Saint-Exupery | Datos: {'titulo': 'El Principito', 'autor': 'Antoine de Saint-Exupery', 'accion': 'agregar_libro'}
+2025-10-03T14:53:28.595469 | LIBRO_AGREGADO | Nuevo libro agregado: '1984' por George Orwell | Datos: {'titulo': '1984', 'autor': 'George Orwell', 'accion': 'agregar_libro'}
+2025-10-03T14:53:28.598467 | PRESTAMO_REALIZADO | Prestamo realizado a Juan Perez | Datos: {'usuario': 'Juan Perez', 'libro': 'Cien Años de Soledad', 'fecha': False, 'accion': 'prestamo'}
